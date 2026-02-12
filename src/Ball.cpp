@@ -1,15 +1,18 @@
 #include "Ball.h"
 #include <cassert>
+#include <cmath>
 #include <iostream>
 #include <random>
 #include <time.h>
 
 using namespace std;
 
-Ball::Ball(int r): x(0), y(0), radius(r) {
+Ball::Ball(Level * level, int r): x(0), y(0), radius(r) {
     assert(r > 0);
     srand(time(NULL));
     angle = rand()%121 + 30;
+    velocityMultiplier = level->getHeight() / 512.0f;
+    cout << velocityMultiplier << endl;
     cout << "Ball successfully created, radius: "<< r << ", angle: " << angle << endl;
 }
 
@@ -24,6 +27,26 @@ int Ball::getY() {return y;}
 
 int Ball::getRadius() {return radius;}
 
+void Ball::update(Level * level) {
+    double tangle = angle * 3.14159 / 180;
+    int tx = (int) x + cos(tangle) * BASE_VELOCITY * velocityMultiplier;
+    int ty = (int) y + sin(tangle) * BASE_VELOCITY * velocityMultiplier;
+    if (tx > radius && tx < level->getWidth() - radius)
+        x = tx;
+    else {
+        srand(time(NULL));
+        angle = 180 - angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA;
+    }
+    if (ty > radius && ty < level->getHeight() - radius)
+        y = ty;
+    else {
+        srand(time(NULL));
+        angle = (-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA;
+    }
+}
+
 void Ball::test() {
-    Ball b1;
+    Level * l = new Level(100, 100);
+    Ball b1(l);
+    delete l;
 }

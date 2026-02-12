@@ -8,9 +8,12 @@ int main() {
     Game game;
     InitWindow(game.getWidth(), game.getHeight(), "Total Brick Breaker");
     ClearWindowState(FLAG_WINDOW_RESIZABLE);
+    SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
+        game.getBall()->update(game.getLevel());
+
         BeginDrawing();
         ClearBackground(RAYWHITE);
         //cout << game.getBall()->getX() << " " << game.getBall()->getY() << endl;

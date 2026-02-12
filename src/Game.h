@@ -18,6 +18,7 @@ class Game {
         int getHeight();
         int getWidth();
         Ball * getBall();
+        Level * getLevel();
 
         //Destructeur
         ~Game();
