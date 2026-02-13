@@ -17,6 +17,13 @@ int Level::getHeight() {return height;}
 
 int Level::getWidth() {return width;}
 
+int Level::getLives() {return lives;}
+
+void Level::setLives(int n) {
+    assert (n >= 0);
+    lives = n;
+}
+
 void Level::test() {
     Level l1;
     assert (l1.height == 0 && l1.width == 0);

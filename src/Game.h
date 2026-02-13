@@ -3,22 +3,24 @@
 
 #include "Level.h"
 #include "Ball.h"
+#include "Sender.h"
+#include "raylib.h"
 
 class Game {
     private:
         Level * level;
         Ball * ball;
+        Sender * sender;
         const int HEIGHT_TO_BALL_FACTOR = 40;
-    public:
+        bool lost = false;
 
+        void init();
+        void update();
+        void lifeDown();
+
+    public:
         //Constructeur par défaut
         Game();
-
-        //Getters
-        int getHeight();
-        int getWidth();
-        Ball * getBall();
-        Level * getLevel();
 
         //Destructeur
         ~Game();
