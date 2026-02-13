@@ -32,23 +32,26 @@ bool Ball::update(Level * level, Sender * sender) {
         double tangle = angle * 3.14159 / 180;
         int tx = (int) x + cos(tangle) * BASE_VELOCITY * velocityMultiplier;
         int ty = (int) y + sin(tangle) * BASE_VELOCITY * velocityMultiplier;
-        if ((tx > 0 + 0.5 * radius) && (tx < level->getWidth() - 0.5 * radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
+        if ((tx > radius) && (tx < level->getWidth() - radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
             x = tx;
         else {
             srand(time(NULL));
             angle = (180 - angle + rand()%(2 * FLUCTUATION_DELTA + 6) - FLUCTUATION_DELTA)%360;
         }
-        //cout << "Balle: " << ty << ", sender: " << sender->getY() + (0.5 * sender->getHeight()) << endl;
-        //cout << collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty) << endl;
-        if ((ty > 0 + 0.5 * radius) && (ty < level->getHeight() - 0.5 * radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
+        if ((ty > radius) && (ty < level->getHeight() - radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
             y = ty;
         else {
+            /*
             if (ty >= level->getHeight() - 0.5 * radius) {
                 return true;
             } else {
                 srand(time(NULL));
                 angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
             }
+            */
+            srand(time(NULL));
+            angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
+            
         }
     } else {
             x = sender->getX();
@@ -58,10 +61,11 @@ bool Ball::update(Level * level, Sender * sender) {
 }
 
 bool Ball::collidesWith(int centerXPos, int centerYPos, int width, int height, int x, int y) {
-    return ((x + 0.5 * radius > centerXPos - 0.5 * width
-    && x - 0.5 * radius < centerXPos + 0.5 * width) &&
-    (y + 0.5 * radius > centerYPos - 0.5 * height
-    && y - 0.5 * radius < centerYPos - 0.5 * height));
+    cout << 0.5 * height - radius << endl;
+    return ((x > centerXPos - (0.5 * width + radius)) &&
+    (x < centerXPos + (0.5 * width + radius)) &&
+    (y > centerYPos - (0.5 * height + radius)) &&
+    (y < centerYPos + (0.5 * height + radius)));
 }
 
 void Ball::setActive(bool active) {this->active = active;}
@@ -71,8 +75,3 @@ void Ball::test() {
     Ball b1(l);
     delete l;
 }
-
-/*
-&& (ty  sender->getY() - (0.5 * (sender->getHeight() + radius))))
-    //&& (tx > sender->getX() + 0.5 * sender->getWidth()) && (tx < sender->getX() - 0.5 * sender->getWidth()))
-*/

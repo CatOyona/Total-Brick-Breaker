@@ -1,18 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-
 project(JeuTBB LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Dossier des headers
-include_directories(include)
-
-# Dossier de sortie pour tous les exécutables
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
-# --- 1️⃣ Executable Linux (.out) ---
-add_executable(executable.out
+set(SOURCES
     src/main.cpp
     src/Game.cpp
     src/Ball.cpp
@@ -20,15 +13,40 @@ add_executable(executable.out
     src/Level.cpp
 )
 
-target_link_libraries(executable.out PRIVATE raylib)
+add_executable(executable ${SOURCES})
 
-add_executable(executable.exe
-    src/main.cpp
-    src/Game.cpp
-    src/Ball.cpp
-    src/Sender.cpp
-    src/Level.cpp
-)
+# === Détection automatique Windows / Linux ===
+if(WIN32)
 
-set(RAYLIB_WIN_PATH /home/ismae/raylib/build-windows/raylib)
-target_link_libraries(executable.exe PRIVATE ${RAYLIB_WIN_PATH}/libraylib.a)
+    target_include_directories(executable PRIVATE
+        /home/ismae/raylib/src
+    )
+
+    target_link_libraries(executable PRIVATE
+        /home/ismae/raylib/build-windows/raylib/libraylib.a
+        -lopengl32
+        -lgdi32
+        -lwinmm
+        -static
+        -static-libgcc
+        -static-libstdc++
+    )
+
+else()
+
+    target_include_directories(executable PRIVATE
+        /home/ismae/raylib/src
+    )
+
+    target_link_libraries(executable PRIVATE
+        /home/ismae/raylib/build/raylib/libraylib.a
+        m pthread dl GL
+    )
+
+endif()
+
+#Dans build-windows
+#cmake .. -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake
+
+#Dans build-linux
+#cmake

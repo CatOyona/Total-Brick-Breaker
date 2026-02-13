@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/mon_executable.dir/src/main.cpp.o CMakeFiles/mon_executable.dir/src/Game.cpp.o CMakeFiles/mon_executable.dir/src/Ball.cpp.o CMakeFiles/mon_executable.dir/src/Level.cpp.o -o mon_executable  -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 

@@ -9,7 +9,7 @@ class Ball {
         int x, y;
         int radius;
         int angle; //Angle entre 0 et 359 (degrés)
-        const int BASE_VELOCITY = 5;
+        const int BASE_VELOCITY = 2;
         const int FLUCTUATION_DELTA = 20;
         float velocityMultiplier = 1.0f;
         bool active = false;

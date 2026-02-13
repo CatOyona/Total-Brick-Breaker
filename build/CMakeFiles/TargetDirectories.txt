@@ -1,4 +1,0 @@
-/home/ismae/Perso/TBB/Total-Brick-Breaker/build/CMakeFiles/executable.out.dir
-/home/ismae/Perso/TBB/Total-Brick-Breaker/build/CMakeFiles/executable.exe.dir
-/home/ismae/Perso/TBB/Total-Brick-Breaker/build/CMakeFiles/edit_cache.dir
-/home/ismae/Perso/TBB/Total-Brick-Breaker/build/CMakeFiles/rebuild_cache.dir

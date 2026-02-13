@@ -1,0 +1,3 @@
+/home/ismae/TBB/Total-Brick-Breaker/build-windows/CMakeFiles/executable.dir
+/home/ismae/TBB/Total-Brick-Breaker/build-windows/CMakeFiles/edit_cache.dir
+/home/ismae/TBB/Total-Brick-Breaker/build-windows/CMakeFiles/rebuild_cache.dir

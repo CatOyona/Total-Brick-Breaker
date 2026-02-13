@@ -8,8 +8,8 @@ Game::Game() {
     int h, w;
     //cout << "Veuillez entrer la taille de la fenêtre désirée (minimum 100 par 100):" << endl;
     //cin >> h >> w;
-    h = 512;
-    w = 512;
+    h = 800;
+    w = 800;
     assert (h >= 100 && w >= 100);
     level = new Level(h, w);
     ball = new Ball(level, h/HEIGHT_TO_BALL_FACTOR);
@@ -32,8 +32,8 @@ void Game::init() {
 
 void Game::update() {
     bool lifeLost = ball->update(level, sender);
-    if (lifeLost)
-        lifeDown();
+    //if (lifeLost)
+        //lifeDown();
 
     BeginDrawing();
     ClearBackground(RAYWHITE);
@@ -42,10 +42,10 @@ void Game::update() {
     DrawText(TextFormat("Lives: %d", level->getLives()), 10, 10, 20, BLACK);
 
     if (IsKeyDown(KEY_RIGHT)) {
-        sender->updatePos(5, level);
+        sender->updatePos(level->getWidth() / 100, level);
     }
     if (IsKeyDown(KEY_LEFT)) {
-        sender->updatePos(-5, level);
+        sender->updatePos((-1) * level->getWidth() / 100, level);
     }
     if (IsKeyDown(KEY_SPACE)) {
         ball->setActive(true);

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/executable.exe.dir/src/main.cpp.o CMakeFiles/executable.exe.dir/src/Game.cpp.o CMakeFiles/executable.exe.dir/src/Ball.cpp.o CMakeFiles/executable.exe.dir/src/Sender.cpp.o CMakeFiles/executable.exe.dir/src/Level.cpp.o -o bin/executable.exe  /home/ismae/raylib/build-windows/raylib/libraylib.a 
