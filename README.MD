@@ -10,9 +10,6 @@ It'll probably not look like much, but at least I'll learn new things.
 ## How to play
 Simply use the executable files in bin (both Windows and Linux files are pre-compiled and ready to play).
 
-## Dependencies
- - raylib installed in /home/user/raylib if you want to compile
-
 ## How to compile
 
 ### For Windows
@@ -36,6 +33,5 @@ cmake ..
 ```
 make
 ```
-
 
 ## Bugs
