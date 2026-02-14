@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ismae/TBB/Total-Brick-Breaker/bin/executable.pdb"
   "CMakeFiles/executable.dir/src/Ball.cpp.o"
   "CMakeFiles/executable.dir/src/Ball.cpp.o.d"
+  "CMakeFiles/executable.dir/src/Brick.cpp.o"
+  "CMakeFiles/executable.dir/src/Brick.cpp.o.d"
   "CMakeFiles/executable.dir/src/Game.cpp.o"
   "CMakeFiles/executable.dir/src/Game.cpp.o.d"
   "CMakeFiles/executable.dir/src/Level.cpp.o"

@@ -19,10 +19,10 @@ class Sender {
         Sender(Level * level);
 
         //Getters
-        int getX();
-        int getY();
-        int getWidth();
-        int getHeight();
+        int getX() const;
+        int getY() const;
+        int getWidth() const;
+        int getHeight() const;
 
         void updatePos(int delta, Level * level, Ball * ball);
         void setPos(int newX, Level * level);

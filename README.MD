@@ -34,4 +34,6 @@ cmake ..
 make
 ```
 
+Find the executables in the `bin` folder.
+
 ## Bugs

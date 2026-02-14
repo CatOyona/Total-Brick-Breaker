@@ -11,6 +11,7 @@ set(SOURCES
     src/Ball.cpp
     src/Sender.cpp
     src/Level.cpp
+    src/Brick.cpp
 )
 
 add_executable(executable ${SOURCES})

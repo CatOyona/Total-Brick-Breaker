@@ -13,13 +13,13 @@ Sender::Sender(Level * level) {
     cout << "Sender's velocity: " << BASE_VELOCITY * velocityMultiplier << endl;
 }
 
-int Sender::getX() {return x;}
+int Sender::getX() const {return x;}
 
-int Sender::getY() {return y;}
+int Sender::getY() const {return y;}
 
-int Sender::getWidth() {return width;}
+int Sender::getWidth() const {return width;}
 
-int Sender::getHeight() {return height;}
+int Sender::getHeight() const {return height;}
 
 void Sender::updatePos(int delta, Level * level, Ball * ball) {
     int tx;

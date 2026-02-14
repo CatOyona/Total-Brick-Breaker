@@ -22,11 +22,11 @@ void Ball::setPos(int newX, int newY, Level * level) {
     x = newX; y = newY;
 }
 
-int Ball::getX() {return x;}
+int Ball::getX() const {return x;}
 
-int Ball::getY() {return y;}
+int Ball::getY() const {return y;}
 
-int Ball::getRadius() {return radius;}
+int Ball::getRadius() const {return radius;}
 
 bool Ball::update(Level * level, Sender * sender) {
     //cout << angle << ", (" << x << ',' << y << ')' << endl;
@@ -63,10 +63,7 @@ bool Ball::update(Level * level, Sender * sender) {
         return false;
 }
 
-bool Ball::collidesWith(int centerXPos, int centerYPos,
-                        int width, int height,
-                        int x, int y)
-{
+bool Ball::collidesWith(int centerXPos, int centerYPos, int width, int height, int x, int y) const {
     float rectLeft   = centerXPos - width / 2.0f;
     float rectRight  = centerXPos + width / 2.0f;
     float rectTop    = centerYPos - height / 2.0f;

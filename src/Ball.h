@@ -18,7 +18,7 @@ class Ball {
 
         //Teste une collision avec un rectangle de centre (centerXPos, centerYPos), de largeur width, et de hauteur height,
         //avec une balle à la position (x, y).
-        bool collidesWith(int centerXPos, int centerYPos, int width, int height, int x, int y);
+        bool collidesWith(int centerXPos, int centerYPos, int width, int height, int x, int y) const;
 
     public:
         //Constructeur par défaut
@@ -28,9 +28,9 @@ class Ball {
         void setPos(int newX, int newY, Level * level);
 
         //Getters
-        int getX();
-        int getY();
-        int getRadius();
+        int getX() const;
+        int getY() const;
+        int getRadius() const;
 
         bool update(Level * level, Sender * sender);
 

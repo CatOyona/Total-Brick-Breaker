@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ismae/TBB/Total-Brick-Breaker/src/Ball.cpp" "CMakeFiles/executable.dir/src/Ball.cpp.o" "gcc" "CMakeFiles/executable.dir/src/Ball.cpp.o.d"
+  "/home/ismae/TBB/Total-Brick-Breaker/src/Brick.cpp" "CMakeFiles/executable.dir/src/Brick.cpp.o" "gcc" "CMakeFiles/executable.dir/src/Brick.cpp.o.d"
   "/home/ismae/TBB/Total-Brick-Breaker/src/Game.cpp" "CMakeFiles/executable.dir/src/Game.cpp.o" "gcc" "CMakeFiles/executable.dir/src/Game.cpp.o.d"
   "/home/ismae/TBB/Total-Brick-Breaker/src/Level.cpp" "CMakeFiles/executable.dir/src/Level.cpp.o" "gcc" "CMakeFiles/executable.dir/src/Level.cpp.o.d"
   "/home/ismae/TBB/Total-Brick-Breaker/src/Sender.cpp" "CMakeFiles/executable.dir/src/Sender.cpp.o" "gcc" "CMakeFiles/executable.dir/src/Sender.cpp.o.d"
