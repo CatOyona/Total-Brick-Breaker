@@ -39,5 +39,3 @@ make
 
 
 ## Bugs
- - Collisions with the racket are too large
- - You can phase the ball inside the racket and get it stuck

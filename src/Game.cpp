@@ -38,14 +38,14 @@ void Game::update() {
     BeginDrawing();
     ClearBackground(RAYWHITE);
     DrawCircle(ball->getX(), ball->getY(), ball->getRadius(), RED);
-    DrawRectangle(sender->getX() - 0.5 * sender->getWidth(), sender->getY() + 0.5 * sender->getHeight(), sender->getWidth(), sender->getHeight(), BLACK);
+    DrawRectangle(sender->getX() - 0.5 * sender->getWidth(), sender->getY() - 0.5 * sender->getHeight(), sender->getWidth(), sender->getHeight(), BLACK);
     DrawText(TextFormat("Lives: %d", level->getLives()), 10, 10, 20, BLACK);
 
     if (IsKeyDown(KEY_RIGHT)) {
-        sender->updatePos(level->getWidth() / 100, level);
+        sender->updatePos(1, level, ball);
     }
     if (IsKeyDown(KEY_LEFT)) {
-        sender->updatePos((-1) * level->getWidth() / 100, level);
+        sender->updatePos(-1, level, ball);
     }
     if (IsKeyDown(KEY_SPACE)) {
         ball->setActive(true);

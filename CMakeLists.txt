@@ -15,15 +15,14 @@ set(SOURCES
 
 add_executable(executable ${SOURCES})
 
-# === Détection automatique Windows / Linux ===
 if(WIN32)
 
     target_include_directories(executable PRIVATE
-        /home/ismae/raylib/src
+        ${CMAKE_SOURCE_DIR}/raylib/src
     )
 
     target_link_libraries(executable PRIVATE
-        /home/ismae/raylib/build-windows/raylib/libraylib.a
+        ${CMAKE_SOURCE_DIR}/raylib/build-windows/raylib/libraylib.a
         -lopengl32
         -lgdi32
         -lwinmm
@@ -35,18 +34,18 @@ if(WIN32)
 else()
 
     target_include_directories(executable PRIVATE
-        /home/ismae/raylib/src
+        ${CMAKE_SOURCE_DIR}/raylib/src
     )
 
     target_link_libraries(executable PRIVATE
-        /home/ismae/raylib/build/raylib/libraylib.a
+        ${CMAKE_SOURCE_DIR}/raylib/build/raylib/libraylib.a
         m pthread dl GL
     )
 
 endif()
 
-#Dans build-windows
+#In build-windows
 #cmake .. -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake
 
-#Dans build-linux
+#In build-linux
 #cmake

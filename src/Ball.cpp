@@ -4,20 +4,21 @@
 #include <iostream>
 #include <random>
 #include <time.h>
+#include <algorithm>
 
 using namespace std;
 
 Ball::Ball(Level * level, int r): x(0), y(0), radius(r) {
     assert(r > 0);
     srand(time(NULL));
-    angle = rand()%121 + 30;
+    angle = rand()%61 - 120;
     velocityMultiplier = level->getHeight() / 512.0f;
-    cout << velocityMultiplier << endl;
+    cout << "Ball's velocity: " << BASE_VELOCITY * velocityMultiplier << endl;
     cout << "Ball successfully created, radius: "<< r << ", angle: " << angle << endl;
 }
 
 void Ball::setPos(int newX, int newY, Level * level) {
-    assert (newX > 0 && newX < level->getWidth() && newY > 0 && newY < level->getHeight());
+    assert (newX > 0 && newX < level->getWidth() && newY > 0 && newY < level->getHeight() );
     x = newX; y = newY;
 }
 
@@ -28,6 +29,7 @@ int Ball::getY() {return y;}
 int Ball::getRadius() {return radius;}
 
 bool Ball::update(Level * level, Sender * sender) {
+    //cout << angle << ", (" << x << ',' << y << ')' << endl;
     if (active) {
         double tangle = angle * 3.14159 / 180;
         int tx = (int) x + cos(tangle) * BASE_VELOCITY * velocityMultiplier;
@@ -35,6 +37,7 @@ bool Ball::update(Level * level, Sender * sender) {
         if ((tx > radius) && (tx < level->getWidth() - radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
             x = tx;
         else {
+            //cout << "Collision horizontale" << endl;
             srand(time(NULL));
             angle = (180 - angle + rand()%(2 * FLUCTUATION_DELTA + 6) - FLUCTUATION_DELTA)%360;
         }
@@ -49,23 +52,30 @@ bool Ball::update(Level * level, Sender * sender) {
                 angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
             }
             */
+            //cout << "Collision verticale" << endl;
             srand(time(NULL));
             angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
-            
         }
     } else {
             x = sender->getX();
-            y = sender->getY() - 0.02 * level->getHeight();
+            y = sender->getY() - 0.5 * sender->getHeight() - radius - 1;
         }
         return false;
 }
 
-bool Ball::collidesWith(int centerXPos, int centerYPos, int width, int height, int x, int y) {
-    cout << 0.5 * height - radius << endl;
-    return ((x > centerXPos - (0.5 * width + radius)) &&
-    (x < centerXPos + (0.5 * width + radius)) &&
-    (y > centerYPos - (0.5 * height + radius)) &&
-    (y < centerYPos + (0.5 * height + radius)));
+bool Ball::collidesWith(int centerXPos, int centerYPos,
+                        int width, int height,
+                        int x, int y)
+{
+    float rectLeft   = centerXPos - width / 2.0f;
+    float rectRight  = centerXPos + width / 2.0f;
+    float rectTop    = centerYPos - height / 2.0f;
+    float rectBottom = centerYPos + height / 2.0f;
+    float closestX = std::max(rectLeft, std::min((float)x, rectRight));
+    float closestY = std::max(rectTop, std::min((float)y, rectBottom));
+    float dx = x - closestX;
+    float dy = y - closestY;
+    return (dx * dx + dy * dy) <= (radius * radius);
 }
 
 void Ball::setActive(bool active) {this->active = active;}

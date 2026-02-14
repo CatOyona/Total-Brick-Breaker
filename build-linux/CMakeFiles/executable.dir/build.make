@@ -156,7 +156,7 @@ executable_EXTERNAL_OBJECTS =
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable: CMakeFiles/executable.dir/src/Sender.cpp.o
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable: CMakeFiles/executable.dir/src/Level.cpp.o
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable: CMakeFiles/executable.dir/build.make
-/home/ismae/TBB/Total-Brick-Breaker/bin/executable: /home/ismae/raylib/build/raylib/libraylib.a
+/home/ismae/TBB/Total-Brick-Breaker/bin/executable: /home/ismae/TBB/Total-Brick-Breaker/raylib/build/raylib/libraylib.a
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable: CMakeFiles/executable.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ismae/TBB/Total-Brick-Breaker/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /home/ismae/TBB/Total-Brick-Breaker/bin/executable"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/executable.dir/link.txt --verbose=$(VERBOSE)

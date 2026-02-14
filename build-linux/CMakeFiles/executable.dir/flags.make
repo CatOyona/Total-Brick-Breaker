@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ismae/raylib/src
+CXX_INCLUDES = -I/home/ismae/TBB/Total-Brick-Breaker/raylib/src
 
 CXX_FLAGS = -std=gnu++17
 

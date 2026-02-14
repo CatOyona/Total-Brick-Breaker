@@ -161,7 +161,7 @@ executable_EXTERNAL_OBJECTS =
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/src/Sender.cpp.obj
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/src/Level.cpp.obj
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/build.make
-/home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: /home/ismae/raylib/build-windows/raylib/libraylib.a
+/home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: /home/ismae/TBB/Total-Brick-Breaker/raylib/build-windows/raylib/libraylib.a
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/linkLibs.rsp
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/objects1.rsp
 /home/ismae/TBB/Total-Brick-Breaker/bin/executable.exe: CMakeFiles/executable.dir/link.txt

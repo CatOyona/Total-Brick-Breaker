@@ -4,14 +4,16 @@
 #include "Level.h"
 #include "Sender.h"
 
+class Sender;
+
 class Ball {
     private:
         int x, y;
         int radius;
         int angle; //Angle entre 0 et 359 (degrés)
-        const int BASE_VELOCITY = 2;
-        const int FLUCTUATION_DELTA = 20;
+        const int BASE_VELOCITY = 5;
         float velocityMultiplier = 1.0f;
+        const int FLUCTUATION_DELTA = 20;
         bool active = false;
 
         //Teste une collision avec un rectangle de centre (centerXPos, centerYPos), de largeur width, et de hauteur height,
