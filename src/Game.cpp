@@ -1,6 +1,8 @@
 #include "Game.h"
+#include "Brick.h"
 #include <cassert>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -40,6 +42,11 @@ void Game::update() {
     DrawCircle(ball->getX(), ball->getY(), ball->getRadius(), RED);
     DrawRectangle(sender->getX() - 0.5 * sender->getWidth(), sender->getY() - 0.5 * sender->getHeight(), sender->getWidth(), sender->getHeight(), BLACK);
     DrawText(TextFormat("Lives: %d", level->getLives()), 10, 10, 20, BLACK);
+
+    for (auto& brick : level->getBricks()) {
+        if (brick.isAlive())
+            DrawRectangle(brick.getX() - 0.5 * brick.getWidth(), brick.getY() - 0.5 * brick.getHeight(), brick.getWidth(), brick.getHeight(), brick.getColor());
+    }
 
     if (IsKeyDown(KEY_RIGHT)) {
         sender->updatePos(1, level, ball);

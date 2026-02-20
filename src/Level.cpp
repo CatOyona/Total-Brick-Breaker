@@ -10,14 +10,17 @@ Level::Level(): height(0), width(0) {
 
 Level::Level(int h, int w): height(h), width(w) {
     assert(h > 0 && w > 0);
+    bricks.push_back(Brick(100, 100, 80, 50, this, 4));
     cout << "Level successfully created, size: " << h << '*' << w << endl;
 }
 
-int Level::getHeight() {return height;}
+int Level::getHeight() const {return height;}
 
-int Level::getWidth() {return width;}
+int Level::getWidth() const {return width;}
 
-int Level::getLives() {return lives;}
+int Level::getLives() const {return lives;}
+
+vector<Brick>& Level::getBricks() {return bricks;}
 
 void Level::setLives(int n) {
     assert (n >= 0);

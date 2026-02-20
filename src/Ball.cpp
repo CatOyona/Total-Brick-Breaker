@@ -29,19 +29,42 @@ int Ball::getY() const {return y;}
 int Ball::getRadius() const {return radius;}
 
 bool Ball::update(Level * level, Sender * sender) {
-    //cout << angle << ", (" << x << ',' << y << ')' << endl;
     if (active) {
         double tangle = angle * 3.14159 / 180;
         int tx = (int) x + cos(tangle) * BASE_VELOCITY * velocityMultiplier;
         int ty = (int) y + sin(tangle) * BASE_VELOCITY * velocityMultiplier;
-        if ((tx > radius) && (tx < level->getWidth() - radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
+        bool horizontalCollision = false;
+        bool verticalCollision = false;
+        
+        for (auto& brick : level->getBricks()) {
+            if (brick.isAlive()) {
+                bool hittenBrick = false;
+                if (brick.isAlive() && collidesWith(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight(), tx, y)) {
+                    horizontalCollision = true;
+                    hittenBrick = true;
+                }
+                if (brick.isAlive() && collidesWith(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight(), x, ty)) {
+                    verticalCollision = true;
+                    hittenBrick = true;
+                }
+                if (hittenBrick)
+                    brick.hit();
+            }
+        }
+        
+        if ((tx <= radius) || (tx >= level->getWidth() - radius) || collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, y))
+            horizontalCollision = true;
+
+        if ((ty <= radius) || (ty >= level->getHeight() - radius) || collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), x, ty))
+            verticalCollision = true;
+
+        if (!horizontalCollision)
             x = tx;
         else {
-            //cout << "Collision horizontale" << endl;
             srand(time(NULL));
             angle = (180 - angle + rand()%(2 * FLUCTUATION_DELTA + 6) - FLUCTUATION_DELTA)%360;
         }
-        if ((ty > radius) && (ty < level->getHeight() - radius) && !collidesWith(sender->getX(), sender->getY(), sender->getWidth(), sender->getHeight(), tx, ty))
+        if (!verticalCollision)
             y = ty;
         else {
             /*
@@ -52,10 +75,10 @@ bool Ball::update(Level * level, Sender * sender) {
                 angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
             }
             */
-            //cout << "Collision verticale" << endl;
             srand(time(NULL));
             angle = ((-1) * angle + rand()%(2 * FLUCTUATION_DELTA + 1) - FLUCTUATION_DELTA)%360;
         }
+
     } else {
             x = sender->getX();
             y = sender->getY() - 0.5 * sender->getHeight() - radius - 1;
